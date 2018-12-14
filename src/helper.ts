@@ -1,19 +1,10 @@
+let matrix: number[][];
 
-
-let rows : number = 4; //rows
-let columns: number = 4; //columns
-let matrix: number[][]= [
-  [1,1,0,0],
-  [0,1,1,0],
-  [0,0,1,0],
-  [1,0,0,0]
-];
-
-// Prints the matrix
-console.log(matrix.join('\n'));
-
-function getMaxNoCells( matrix: number[][]) {
+export function getMaxNoCells( m: number[][]) {
   let maxCount = 0;
+  matrix = m;
+  let rows = matrix.length;
+  let columns = matrix[0].length;
   for(let n = 0; n <= rows; n++) {
     for(let m = 0; m <= columns; m++) {
       let noCells = countConnectedCells(n,m,rows,columns);
@@ -41,5 +32,3 @@ function countConnectedCells(row: number, column: number, rows: number, columns:
     countConnectedCells(row -1, column, rows, columns) +
     countConnectedCells(row -1, column + 1, rows, columns);
 }
-
-console.log(getMaxNoCells(matrix))
